@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/home_provider.dart';
 
 class MusicScreen extends StatefulWidget {
   const MusicScreen({super.key});
@@ -8,24 +11,43 @@ class MusicScreen extends StatefulWidget {
 }
 
 class _MusicScreenState extends State<MusicScreen> {
+  MusicProvider? providerr;
+  MusicProvider? providerw;
+
   @override
   Widget build(BuildContext context) {
+    providerr = context.read<MusicProvider>();
+    providerw = context.watch<MusicProvider>();
     return ListView.builder(
-      itemCount: 5,
-      itemBuilder: (context, index) => ListTile(
-        leading: Padding(
-          padding: const EdgeInsets.all(5.0),
-          child: Image.asset("assets/images/img1.jpg"),
-        ),
-        title: const Text("Music",style: TextStyle(color: Colors.white),),
-        trailing: IconButton(
-          onPressed: () {
-            Navigator.pushNamed(context, "MusicPlayer");
-          },
-          icon: const Icon(Icons.arrow_forward_ios,color: Colors.white,),
-
-        ),
-      ),
+      itemCount: providerw!.musicList.length,
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10),
+          child: ListTile(
+            onTap: () {
+              providerr!.changIndex(index);
+              Navigator.pushNamed(context, 'MusicPlayer');
+            },
+            leading: ClipRRect(
+              borderRadius: BorderRadius.circular(5),
+              child: Image.asset(
+                "${providerw!.musicList[index].image}",
+                height: 80,
+                width: 50,
+                fit: BoxFit.cover,
+              ),
+            ),
+            title: Text(
+              "${providerw!.musicList[index].title}",
+              style: const TextStyle(color: Colors.white, fontSize: 20),
+            ),
+            trailing: const Icon(
+              Icons.arrow_forward_ios,
+              color: Colors.white,
+            ),
+          ),
+        );
+      },
     );
   }
 }
