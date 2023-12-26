@@ -8,7 +8,6 @@ void main() {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => MusicProvider()),
-        // 9427342306
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

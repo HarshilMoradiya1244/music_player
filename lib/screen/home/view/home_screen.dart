@@ -29,7 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
             centerTitle: true,
             bottom: const TabBar(
               indicatorColor: Colors.black,
-              dividerColor:Colors.black,
+              dividerColor: Colors.black,
               labelColor: Colors.black,
               tabs: [
                 Tab(

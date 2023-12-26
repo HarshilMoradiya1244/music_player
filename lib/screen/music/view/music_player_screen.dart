@@ -85,9 +85,9 @@ class _MusicPlayerScreenState extends State<MusicPlayerScreen> {
                     const SizedBox(
                       height: 5,
                     ),
-                     Text(
-                      "${providerw!.musicList[providerw!.index].subTitle}",
-                      style: const TextStyle(fontSize: 12, color: Colors.white),
+                    const Text(
+                      "Manan Bhardwaj , Bhupinder Babbal",
+                      style: TextStyle(fontSize: 12, color: Colors.white),
                     ),
                     PlayerBuilder.currentPosition(
                       player: player,
